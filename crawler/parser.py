@@ -48,7 +48,7 @@ class GetIdList(HTMLParser):
 ##response = urllib2.urlopen(req)
 ##the_page = response.read()
 
-htmlfile = open('/home/c/h/changn/Download/result.html','r')
+htmlfile = open('/home/c/h/changn/Download/result.html','r') #url to be chenged
 the_page = htmlfile.read()
 lister = GetIdList()
 lister.feed(the_page)
