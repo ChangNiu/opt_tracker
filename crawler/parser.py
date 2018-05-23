@@ -1,4 +1,5 @@
 from html.parser import HTMLParser
+
 class GetIdList(HTMLParser):
     def reset(self): #default
         self.IDlist = []
@@ -48,7 +49,7 @@ class GetIdList(HTMLParser):
 ##response = urllib2.urlopen(req)
 ##the_page = response.read()
 
-htmlfile = open('/home/c/h/changn/Download/result.html','r') #url to be chenged
+htmlfile = open('./result.html','r') #url to be chenged
 the_page = htmlfile.read()
 lister = GetIdList()
 lister.feed(the_page)
