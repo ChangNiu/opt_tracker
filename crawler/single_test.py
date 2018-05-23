@@ -8,17 +8,20 @@ def craw_page(formdata, http_session):
     r = http_session.post(target_url, data=formdata)
     return r.text
 
-def get_single_page():
+def get_single_page(case_num):
     s = requests.Session()
     http_form = {
-        'appReceiptNum': 'YSC1890125000',
+        'appReceiptNum': 'YSC1890',
         'initCaseSearch': 'CHECK+STATUS',
         'changeLocale': ''
         }
+    http_form['appReceiptNum'] += str(case_num)
     raw_html = craw_page(http_form, s)
-    f = open('result.html', 'w')
+    filename = 'result' + str(case_num) +'.html'
+    f = open(filename, 'w')
     f.write(raw_html)
 
 
 if __name__ == '__main__':
-    get_single_page()
+    for i in range(100):
+        get_single_page(i+145000)
