@@ -18,7 +18,7 @@ def get_single_page(case_num):
         }
     http_form['appReceiptNum'] += str(case_num)
     raw_html = craw_page(http_form, s)
-    filename = 'result' + str(case_num) +'.html'
+    filename = 'sample/result' + str(case_num) +'.html'
     f = open(filename, 'w')
     f.write(raw_html)
     return raw_html
@@ -43,7 +43,7 @@ def extract_detail(text):
 
 
 if __name__ == '__main__':
-    t = get_single_page(145100)
+    t = get_single_page(148020)
     print(extract_info(t))
     # for i in range(100):
     #     get_single_page(i+145000)
