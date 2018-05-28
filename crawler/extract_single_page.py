@@ -95,16 +95,11 @@ def extract_date(text):
 
 
 def extract_form(text) :
-
-    #find FORM type
-    form_pattern = re.compile('Form I',re.I)
-    form_start_bool = form_pattern.search(text)
-    form = ''
-    if form_start_bool != None:
-        form_start = form_start_bool.span()[0]
-        form = text[form_start: form_start + 10]
-
-    return form
+    form_pattern = re.compile(r'Form\ I\-[0-9]{3}',re.I)
+    form_result = form_pattern.search(text)
+    if form_result != None:
+        form_result = form_result.group(0)
+    return form_result
     
 
 if __name__ == '__main__':

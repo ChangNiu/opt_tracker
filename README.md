@@ -7,7 +7,7 @@
 - mongodb
 - vue
 
-###case types
+## case types
 
 - Case Was Received
 - New Card Is Being Produced
