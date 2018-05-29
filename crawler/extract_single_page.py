@@ -20,8 +20,8 @@ def get_single_page(case_num):
     http_form['appReceiptNum'] += str(case_num)
     raw_html = craw_page(http_form, s)
     filename = 'sample/result' + str(case_num) +'.html'
-    f = open(filename, 'w')
-    f.write(raw_html)
+    # f = open(filename, 'w')
+    # f.write(raw_html)
     return raw_html
 
 def extract_info(raw_html):
