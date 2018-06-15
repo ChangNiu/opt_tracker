@@ -1,6 +1,7 @@
 import requests
 import re
 import datetime
+import sys
 
 target_url = 'https://egov.uscis.gov/casestatus/mycasestatus.do'
 userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
@@ -8,6 +9,9 @@ userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML,
 def craw_page(formdata, http_session):
     http_session.headers['User-Agent'] = userAgent
     r = http_session.post(target_url, data=formdata)
+    if r.status_code // 100 != 2:
+        print(r.status_code, ':', formdata['appReceiptNum'], file=sys.stderr)
+        return None
     return r.text
 
 def get_single_page(case_num):
@@ -81,7 +85,7 @@ def extract_form(text) :
     
 
 if __name__ == '__main__':
-    t = get_single_page(148020)
+    t = get_single_page(197048)
     info = extract_info(t)
     #print(info)
     status = extract_status(info)
